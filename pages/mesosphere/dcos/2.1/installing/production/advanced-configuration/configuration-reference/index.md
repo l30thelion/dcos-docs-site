@@ -40,6 +40,7 @@ This page contains the configuration parameters for both DC/OS Enterprise and DC
 | [master_discovery](#master-discovery)                                 | (Required) The Mesos master discovery method.         |
 | [master_external_loadbalancer](#master-external-loadbalancer-enterprise)         | The DNS name or IP address for the load balancer.  [enterprise type="inline" size="small" /]      |
 | [mesos_container_log_sink](#mesos-container-log-sink)                 | The log manager for containers (tasks). |
+| [mesos_cgroups_enable_cfs](#mesos-cgroups-enable-cfs)                 | Whether or not CPU quota should be enforced by default. |
 | [mesos_http_executor_domain_sockets](#mesos-http-executor-domain-sockets) | Whether executors should communicate with the agent over domain sockets instead of local connections. Default is `true`. |
 | [mesos_seccomp_enabled](#mesos-seccomp-enabled)                       | Indicates whether to enable Seccomp support for UCR containers. |
 | [mesos_seccomp_profile_name](#mesos-seccomp-profile-name)             | The name of the default Seccomp profile. |
@@ -424,7 +425,7 @@ The amount of time to wait before removing docker containers (i.e., `docker rm`)
 Indicates whether to run the [docker-gc](https://github.com/spotify/docker-gc#excluding-images-from-garbage-collection) script, a simple Docker container and image garbage collection script, once every hour to clean up stray Docker containers. You can configure the runtime behavior by using the `/etc/` config. For more information, see the [documentation](https://github.com/spotify/docker-gc#excluding-images-from-garbage-collection).
 
 *  `enable_docker_gc: 'true'` Run the docker-gc scripts once every hour. This is the default value for [cloud](/mesosphere/dcos/2.1/installing/evaluation/mesosphere-supported-methods) template installations.
-*  `enable_docker_gc: 'false'` Do not run the docker-gc scripts once every hour. This is the default value for [custom](/mesosphere/dcos/2.1/installing/ent/custom/) installations.
+*  `enable_docker_gc: 'false'` Do not run the docker-gc scripts once every hour. This is the default value for [on-prem](/mesosphere/dcos/2.1/installing/ent/production/) installations.
 
 
 ### enable_mesos_input_plugin
@@ -594,6 +595,9 @@ The log manager for containers (tasks). The options are:
 * `'journald+logrotate'` - send logs to both journald and the file system
 
 The default is `logrotate`. Due to performance issues, `journald` is not recommended. For details, see [Logging Reference](/mesosphere/dcos/2.1/monitoring/logging/logging-reference/#compatibility).
+
+### mesos_cgroups_enable_cfs
+Determines whether or not CPU quota will be enforced for tasks which do not specify a CPU limit. This parameter is `true` by default, which means that when a DC/OS service is launched which specifies some CPU resources but does not specify a CPU limit, the service's CPU limit will be implicitly set to the value of the CPU resources, thus constraining the service to be scheduled on the agent's CPU no more than allowed by the implicit limit. When this parameter is `false`, DC/OS services which do not explicitly set CPU limits will not have their CPU usage constrained at all.
 
 ### mesos_dns_set_truncate_bit
 Indicates whether Mesos-DNS sets the truncate bit if the response is too large to fit in a single packet.

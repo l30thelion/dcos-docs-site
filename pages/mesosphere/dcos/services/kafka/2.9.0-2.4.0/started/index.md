@@ -147,7 +147,7 @@ Use the following steps to change configurations at runtime:
 
 ## Configuration Update REST API
 
-Make the REST request below to view the current deployment plan. See the REST API Authentication part of the [REST API Reference](api-reference.md) topic for information on how this request must be authenticated.
+Make the REST request below to view the current deployment plan. See the REST API Authentication part of the [REST API Reference](../reference) topic for information on how this request must be authenticated.
 
 ```bash
 curl -H "Authorization: token=$auth_token" "<dcos_url>/service/kafka/v1/plan"
@@ -346,7 +346,7 @@ The defaults can be overridden at install time by specifying an options.json fil
     }
 ```
 
-These same values are also represented as environment variables for the scheduler in the form `KAFKA_OVERRIDE_LOG_RETENTION_HOURS` and may be modified through the DC/OS web interface and deployed during a rolling upgrade as described in [changing configuration at runtime](/mesosphere/dcos/services/kafka/2.6.0-2.2.1/started/#changing-configuration-at-runtime).
+These same values are also represented as environment variables for the scheduler in the form `KAFKA_OVERRIDE_LOG_RETENTION_HOURS` and may be modified through the DC/OS web interface and deployed during a rolling upgrade as described in [changing configuration at runtime](#changing-configuration-at-runtime).
 
 <a name="disk-type"></a>
 ## Disk Type
