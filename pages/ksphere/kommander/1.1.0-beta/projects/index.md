@@ -12,7 +12,7 @@ Projects empower teams to deploy their configurations and services to clusters i
 
 Namespaces isolate configurations across clusters and are created on all clusters matching the project labels. When creating a new project, you can customize the Kubernetes namespace that is also created.
 
-![Creating a Project](/ksphere/kommander/1.1-beta/img/project-create.png)
+![Creating a Project](/ksphere/kommander/1.1.0-beta/img/project-create.png)
 
 ## Clusters
 
@@ -20,7 +20,7 @@ A project contains label selectors that identify targets for configuration, allo
 
 When creating a project, you see the matching clusters as you enter label selectors.
 
-![Creating a Project](/ksphere/kommander/1.1-beta/img/project-create-labels.png)
+![Creating a Project](/ksphere/kommander/1.1.0-beta/img/project-create-labels.png)
 
 ## Roles
 
@@ -38,8 +38,16 @@ In Kommander you can configure ConfigMaps and Secrets for your projects.
 
 Using project ConfigMaps and project Secrets you can define configuration resources to distribute to all project clusters.
 
-![Creating a Secret](/ksphere/kommander/1.1-beta/img/project-secret-create.png)
+![Creating a Secret](/ksphere/kommander/1.1.0-beta/img/project-secret-create.png)
 
 ## Platform Services
 
 Platform Services provide a catalog of applications you can deploy across all project clusters. See [Addon Catalog](/ksphere/kommander/latest/projects/addon-catalog) for more information
+
+## Quotas
+
+Quotas can be set to constrain resource usage. Quotas are applied to all project clusters.
+
+Kommander provides a set of default resources you can set Quotas for, or you can define custom Quotas. It is recommended to set Quotas for CPU and Memory.
+
+![Adding a custom Quota](/ksphere/kommander/1.1.0-beta/img/project-quotas-add-custom.png)
