@@ -41,7 +41,7 @@ Check version
 konvoy --version
 ```
 
-Once you have the newest version of konvoy, move into the directory where you would like to test. Please note, you will have to confirm your access to your cloud or internal network provider, or you may encounter a message that says `failed to deploy the cluster: error provisioning cluster`
+Once you have the newest version of Konvoy, move into the directory where you would like to test. Please note, you will have to confirm your access to your cloud or internal network provider, or you may encounter a message that says `failed to deploy the cluster: error provisioning cluster`
 
 Once done, run this command:
 
